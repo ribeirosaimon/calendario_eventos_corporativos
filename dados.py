@@ -1,4 +1,6 @@
-import pandas as pd
+import csv
 
-ler = pd.read_csv('crono_2020.csv', error_bad_lines=False)
-print(ler)
+with open('crono_2020.csv', 'r') as arquivo_csv:
+    leitor = csv.reader(arquivo_csv, delimiter=',')
+    for x in leitor:
+        print(f'{x[0]} data do resultado {x[16]}')
