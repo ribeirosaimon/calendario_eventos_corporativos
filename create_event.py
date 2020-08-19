@@ -11,15 +11,16 @@ def criar_evento(lista_da_empresa, service):
         result_3t = lista_da_empresa[3]
         lista_de_resultados = [result_1t,result_2t,result_3t]
         for index in lista_de_resultados:
-            id_lista += 1
-            timezone = 'America/Sao_Paulo'
             index = index.split('/')
+            print(lista_de_resultados, index)
 
+            timezone = 'America/Sao_Paulo'
             mes = int(index[0])
             dia = int(index[1])
             ano = int(index[2])
 
             start_time = datetime(ano, mes, dia, 8, 00, 0)
+
             end_time = start_time + timedelta(hours=1)
             event = {
               'summary': f'Resultados da {nome_empresa}',
@@ -42,4 +43,4 @@ def criar_evento(lista_da_empresa, service):
               },
             }
             del(lista_de_resultados[:])
-            service.events().insert(calendarId='primary', body=event).execute()
+            #service.events().insert(calendarId='primary', body=event).execute()
