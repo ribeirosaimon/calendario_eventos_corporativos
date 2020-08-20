@@ -43,6 +43,7 @@ def main():
     service = build("calendar", "v3", credentials=creds)
     for index in tratamento_datas():
         criar_evento(index, service)
+        print(f'{index[0]} criado com sucesso')
 
 if __name__ == '__main__':
     main()
