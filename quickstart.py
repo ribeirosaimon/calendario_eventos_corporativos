@@ -6,6 +6,7 @@ from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 from create_event import *
+from edit_event import *
 from dados import *
 
 '''
@@ -41,9 +42,10 @@ def main():
         with open('token.pickle', 'wb') as token:
             pickle.dump(creds, token)
     service = build("calendar", "v3", credentials=creds)
-    for index in tratamento_datas():
-        criar_evento(index, service)
-        print(f'{index[0]} criado com sucesso')
+    #for index in tratamento_datas():
+    #    criar_evento(index, service)
+    #    print(f'{index[0]} criado com sucesso')
+    editar_evento(service)
 
 if __name__ == '__main__':
     main()
