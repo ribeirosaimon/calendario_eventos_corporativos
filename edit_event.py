@@ -3,7 +3,14 @@ from datetime import datetime, timedelta
 
 
 def editar_evento(service):
-    result = service.calendarList().list().execute()
-    calendar_id = result['items'][0]['id']
-    result = service.events().list(calendarId=calendar_id, timeZone='America/Sao_Paulo').execute()
-    print(result['items'][0])
+    page_token = None
+    while True:
+      events = service.events().list(calendarId='primary', pageToken=page_token).execute()
+      for event in events['items']:
+        if event['summary'] == 'Resultados da VIVER':
+        #    eventId = event['id']
+        #    service.events().delete(calendarId='primary', eventId=eventId).execute()
+            print(event['summary'])
+      page_token = events.get('nextPageToken')
+      if not page_token:
+        break
