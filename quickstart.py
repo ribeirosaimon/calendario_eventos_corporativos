@@ -41,9 +41,6 @@ def main():
         with open('token.pickle', 'wb') as token:
             pickle.dump(creds, token)
     service = build("calendar", "v3", credentials=creds)
-    #for index in tratamento_datas():
-    #    criar_evento(index, service)
-    #    print(f'{index[0]} criado com sucesso')
     editar_evento(service)
 
 if __name__ == '__main__':

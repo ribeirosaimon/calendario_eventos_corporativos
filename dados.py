@@ -1,22 +1,20 @@
 import csv
 
-def tratamento_datas():
-    lista_de_resultados =[]
+lista_de_resultados = []
+
+def tratamento_dos_dados_da_b3():
     with open('crono_2020.csv', 'r') as arquivo_csv:
         empresas = csv.reader(arquivo_csv, delimiter=',')
         for resultados in empresas:
-            empresa = []
-            empresa.append(resultados[0])
-            empresa.append(resultados[12])
-            lista_de_resultados.append(empresa)
-            del(empresa[:])
-            empresa.append(resultados[0])
-            empresa.append(resultados[14])
-            lista_de_resultados.append(empresa)
-            del(empresa[:])
-            empresa.append(resultados[0])
-            empresa.append(resultados[16])
-            lista_de_resultados.append(empresa)
-
+            adicionando_empresas_a_lista(resultados[0],resultados[12])
+            adicionando_empresas_a_lista(resultados[0],resultados[14])
+            adicionando_empresas_a_lista(resultados[0],resultados[16])
     del(lista_de_resultados[0:10])
     return lista_de_resultados
+
+def adicionando_empresas_a_lista(nome,data):
+    nova_lista = []
+    nova_lista.append(nome)
+    nova_lista.append(data)
+    lista_de_resultados.append(nova_lista)
+    return None
