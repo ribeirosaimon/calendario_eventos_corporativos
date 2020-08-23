@@ -3,7 +3,7 @@ import csv
 lista_de_resultados = []
 
 def tratamento_dos_dados_da_b3():
-    with open('crono_2020.csv', 'r') as arquivo_csv:
+    with open('cronograma.csv', 'r') as arquivo_csv:
         empresas = csv.reader(arquivo_csv, delimiter=',')
         for resultados in empresas:
             adicionando_empresas_a_lista(resultados[0],resultados[12])
