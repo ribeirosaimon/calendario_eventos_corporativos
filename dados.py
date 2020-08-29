@@ -16,7 +16,7 @@ def adicionando_empresas_a_lista(nome,data):
     nova_lista = []
     data = data[:10].split('-')
     if len(data) != 3:
-        data = 'cabeçalho'
+        data = '1/1/1'
     else:
         if data[1][0] == '0':
             data[1] = data[1].replace('0','')
