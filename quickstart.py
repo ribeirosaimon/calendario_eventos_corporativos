@@ -2,21 +2,17 @@ from __future__ import print_function
 import datetime
 import pickle
 import os.path
+import schedule
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 from create_event import *
 from edit_event import *
 from dados import *
+from donwload_arquivo import *
 
-'''
-    credentials = pickle.load(open("token.pickle", "rb"))
-    service = build("calendar", "v3", credentials=credentials)
-    result = service.calendarList().list().execute()
-    calendar_id = result['items'][0]['id']
-    print(result)
 
-'''
+site_b3 = 'http://www.b3.com.br/data/files/41/60/CE/23/BA3DF6107DF7ACF6AC094EA8/Cronograma%20de%20Eventos%20Corporativos%202020.xlsx'
 # If modifying these scopes, delete the file token.pickle.
 def main():
 
@@ -41,7 +37,13 @@ def main():
         with open('token.pickle', 'wb') as token:
             pickle.dump(creds, token)
     service = build("calendar", "v3", credentials=creds)
-    editar_evento(service)
+    #baixar_arquivo(site_b3)
+    #editar_evento(service)
+    print('foi')
+
+schedule.every().day.at("20:00").do(main)
 
 if __name__ == '__main__':
-    main()
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
