@@ -18,29 +18,21 @@ KEY = os.environ.get('client_secret.json')
 def main():
     SCOPES = ['https://www.googleapis.com/auth/calendar']
     creds = None
-    print('processo 1 ok')
     if os.path.exists('token.pickle'):
         with open('token.pickle', 'rb') as token:
             creds = pickle.load(token)
-            print('processo 2 ok')
-            print(f'creeds: {creds.valid}')
     if not creds or not creds.valid:
         if creds and creds.expired and creds.refresh_token:
             creds.refresh(Request())
-            print('processo 3 ok')
         else:
             flow = InstalledAppFlow.from_client_secrets_file(KEY, SCOPES)
             #flow = InstalledAppFlow.from_client_secrets_file('client_secret.json', SCOPES)
             creds = flow.run_local_server(port=0)
-            print('processo 4 ok')
         with open('token.pickle', 'wb') as token:
             pickle.dump(creds, token)
-            print('processo 5 ok')
     service = build("calendar", "v3", credentials=creds)
     baixar_arquivo(site_b3)
-    print('processo 6 ok')
     editar_evento(service)
-    print('fechou!')
 
 #schedule.every().day.at("23:00").do(main)
 #schedule.every(1).minutes.do(main)
