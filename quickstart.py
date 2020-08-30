@@ -23,7 +23,7 @@ def main():
         with open('token.pickle', 'rb') as token:
             creds = pickle.load(token)
             print('processo 2 ok')
-            print(f'creeds: {creds is valid}')
+            print(f'creeds: {creds.valid}')
     if not creds or not creds.valid:
         if creds and creds.expired and creds.refresh_token:
             creds.refresh(Request())
