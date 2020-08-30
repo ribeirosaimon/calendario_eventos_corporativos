@@ -40,6 +40,6 @@ def main():
 if __name__ == '__main__':
     while True:
         #schedule.run_pending()
-        main()
+        #main()
         print('ok')
         time.sleep(30)
