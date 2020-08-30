@@ -35,9 +35,11 @@ def main():
     editar_evento(service)
 
 #schedule.every().day.at("23:00").do(main)
-schedule.every(1).minutes.do(main)
+#schedule.every(1).minutes.do(main)
 
 if __name__ == '__main__':
     while True:
-        schedule.run_pending()
-        time.sleep(1)
+        #schedule.run_pending()
+        main()
+        print('ok')
+        time.sleep(30)
