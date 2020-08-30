@@ -34,13 +34,11 @@ def main():
     baixar_arquivo(site_b3)
     editar_evento(service)
 
-#schedule.every().day.at("23:00").do(main)
+schedule.every().day.at("23:00").do(main)
 #schedule.every(1).minutes.do(main)
 
 if __name__ == '__main__':
-    main()
-
-    #while True:
-        #schedule.run_pending()
-        #main()
-        #time.sleep(30)
+    #main()
+    while True:
+        schedule.run_pending()
+        time.sleep(30)
