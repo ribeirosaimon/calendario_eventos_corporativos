@@ -13,7 +13,7 @@ from donwload_arquivo import *
 
 
 site_b3 = 'http://www.b3.com.br/data/files/41/60/CE/23/BA3DF6107DF7ACF6AC094EA8/Cronograma%20de%20Eventos%20Corporativos%202020.xlsx'
-KEY = os.environ.get(KEY)
+KEY = os.environ.get('client_secret.json')
 
 def main():
     SCOPES = ['https://www.googleapis.com/auth/calendar']
