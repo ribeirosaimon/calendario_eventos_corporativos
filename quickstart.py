@@ -38,8 +38,9 @@ def main():
 #schedule.every(1).minutes.do(main)
 
 if __name__ == '__main__':
-    while True:
+    main()
+
+    #while True:
         #schedule.run_pending()
         #main()
-        print('ok')
-        time.sleep(30)
+        #time.sleep(30)
