@@ -1,1 +1,1 @@
-worker: python3 quickstart.py
+worker: python quickstart.py
