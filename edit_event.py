@@ -22,10 +22,13 @@ def editar_evento(service):
         events = service.events().list(calendarId='primary', pageToken=page_token).execute()
         for event in events['items']:
             time.sleep(1)
-            lista = []
-            lista.append(event['summary'])
-            lista.append(tratamento_de_data(event['start']['dateTime']))
-            lista2.append(lista)
+            try:
+                lista = []
+                lista.append(event['summary'])
+                lista.append(tratamento_de_data(event['start']['dateTime']))
+                lista2.append(lista)
+            except:
+                pass
         page_token = events.get('nextPageToken')
         if not page_token:
             break
