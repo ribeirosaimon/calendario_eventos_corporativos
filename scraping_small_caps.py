@@ -9,7 +9,4 @@ browser = BeautifulSoup(get(url_small_caps).content, "html.parser")
 base = browser.find('tbody').findAll('tr')
 for tr_soup in base:
     td_soup = tr_soup.findAll('td')
-    carteira_small.append(td_soup[1].text.replace(' ',''))
-
-
-print(carteira_small)
+    carteira_small.append(td_soup[1].text.replace('\n',''))
