@@ -14,7 +14,6 @@ def tratamento_dos_dados_da_b3():
             adicionando_empresas_a_lista(resultados[0],resultados[14])
             adicionando_empresas_a_lista(resultados[0],resultados[16])
     del(lista_de_resultados[:10])
-
     dados_faltantes = [li for li in lista_das_carteiras_do_ibov if li not in lista_de_resultados]
     dados_faltantes_um = [li for li in lista_de_resultados if li not in lista_das_carteiras_do_ibov]
     for result in lista_de_resultados:

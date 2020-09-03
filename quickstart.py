@@ -13,7 +13,7 @@ from donwload_arquivo import *
 
 
 site_b3 = 'http://www.b3.com.br/data/files/41/60/CE/23/BA3DF6107DF7ACF6AC094EA8/Cronograma%20de%20Eventos%20Corporativos%202020.xlsx'
-#KEY = os.environ.get('client_secret.json')
+KEY = os.environ.get('client_secret.json')
 
 def main():
     SCOPES = ['https://www.googleapis.com/auth/calendar']
@@ -25,8 +25,8 @@ def main():
         if creds and creds.expired and creds.refresh_token:
             creds.refresh(Request())
         else:
-            #flow = InstalledAppFlow.from_client_secrets_file(KEY, SCOPES)
-            flow = InstalledAppFlow.from_client_secrets_file('client_secret.json', SCOPES)
+            flow = InstalledAppFlow.from_client_secrets_file(KEY, SCOPES)
+            #flow = InstalledAppFlow.from_client_secrets_file('client_secret.json', SCOPES)
             creds = flow.run_local_server(port=0)
         with open('token.pickle', 'wb') as token:
             pickle.dump(creds, token)
@@ -34,11 +34,11 @@ def main():
     baixar_arquivo(site_b3)
     editar_evento(service)
 
-#schedule.every().day.at("23:00").do(main)
+schedule.every().day.at("23:00").do(main)
 #schedule.every(1).minutes.do(main)
 
 if __name__ == '__main__':
-    main()
-    #while True:
-    #    schedule.run_pending()
-    #    time.sleep(30)
+    #main()
+    while True:
+        schedule.run_pending()
+        time.sleep(30)
