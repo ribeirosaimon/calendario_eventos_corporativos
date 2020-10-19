@@ -21,10 +21,11 @@ def editar_evento(service):
     while True:
         events = service.events().list(calendarId='primary', pageToken=page_token).execute()
         for event in events['items']:
-            time.sleep(1)
+            #time.sleep(1)
             try:
                 lista = []
                 lista.append(event['summary'])
+                print(event['summary'])
                 lista.append(tratamento_de_data(event['start']['dateTime']))
                 lista2.append(lista)
             except:
